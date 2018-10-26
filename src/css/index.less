@@ -1,0 +1,13 @@
+/**
+ * less 模块的入口文件。
+ * 模块文件使用 & {} 包裹，避免变量泄露到全局。
+ * 全局变量应该定义在 global 文件里而不是模块中。
+ * 在非入口文件中的模块间相互引用要是用 reference，
+ *     避免要引用的模块被重复打包。
+ * Code: @import (reference) "global";
+ */
+ @import "./common/index";
+ @import "./components/index";
+ 
+ 
+ 
