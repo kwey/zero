@@ -4,9 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>demo</title>
+    <style>
+    html, body, .fa{
+        width: 100%;
+        height: 100%;
+        text-align: center;
+    }
+    </style>
 </head>
 <body>
+    <div class="fa">demo</div>
     <script src="../dist/index.js"></script>
+    <script>
+    
+    new Demo({
+        container: document.querySelector('.fa'),
+        name: 123,
+    })
+    
+    </script>
 </body>
 </html>

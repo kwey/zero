@@ -1,0 +1,22 @@
+{
+    "linterOptions": {
+      "exclude": [
+        "node_modules/**",
+        "demo/**",
+        "dist/**"
+      ]
+    },
+    "extends": [
+      "tslint-config-airbnb"
+    ],
+    "rules": {
+      "ter-indent": [
+        true,
+        4,
+        {
+            "SwitchCase": 1
+        }
+      ]
+    }
+  }
+  

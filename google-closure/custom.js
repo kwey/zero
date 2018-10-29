@@ -8,3 +8,7 @@ var global;
 var localStorage;
 var sessionStorage;
 var DEBUG
+
+
+// MEATA
+var name, version, hash, branch, lastModefied;

@@ -1,13 +1,23 @@
 
+import { ConfigInterface } from '../rebuildConfig';
+class Demo {
+    prefix: string;
+    container: HTMLElement;
+    first: Function;
 
-class demo {
-    constructor(config: any) {
+    constructor(config: ConfigInterface) {
+        this.container = config.container;
+        this.prefix = 'kwe';
+        this.container.classList.add(this.prefix);
         this.init();
     }
 
     init() {
-        console.log('object');
+        this.first = () => {
+            this.container.innerText = 'TYPESCRIPT DEMO';
+        };
+        this.first();
     }
 }
 
-export default demo;
+export default Demo;

@@ -1,3 +1,4 @@
+const path = require('path');
 const autoprefixer = require('autoprefixer');
 
 module.exports = {
@@ -8,12 +9,24 @@ module.exports = {
     rules: [
         {
             test: /\.tsx?$/,
-            use: 'ts-loader',
-            exclude: [/node_modules/]
+            include: [
+                path.resolve(__dirname, "src")
+            ],
+            enforce: 'pre',
+            use: [
+                {
+                    loader: 'ts-loader',
+                },
+                {
+                    loader: 'tslint-loader',
+                }
+            ]
         },
         {
             test: /\.less$/,
-            exclude: [/node_modules/],
+            include: [
+                path.resolve(__dirname, "src")
+            ],
             use:[
                 {
                     loader: 'style-loader',
@@ -42,6 +55,18 @@ module.exports = {
                     options: {sourceMap: false},
                 },
             ]
+        },
+        {
+            test: /\.(png|jpg|gif|ttf|eot|woff)$/,
+            include: [
+                path.resolve(__dirname, "src")
+            ],
+            use: [
+                {
+                    loader: 'url-loader',
+                    options: {limit: 819200},
+                },
+            ],
         },
     ]
 }

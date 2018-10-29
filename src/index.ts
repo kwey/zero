@@ -1,7 +1,17 @@
+/// <reference path='../types/index.d.ts'/>
 
-import './css/index.less';
+import './static/index.less';
 
-import demo from "./ts/index";
+import index from './ts/index';
+import rebuildConfig, { ConfigInterface }from './rebuildConfig';
+import { metadata } from './metadata';
 
+export class Demo {
+    constructor(config: any) {
+        const options: ConfigInterface = rebuildConfig(config);
+        options.metadata = metadata;
+        const d = new index(options);
+    }
+}
 
-export default demo;
+window['Demo'] = Demo;
