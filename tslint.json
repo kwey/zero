@@ -7,7 +7,7 @@
       ]
     },
     "extends": [
-      "tslint-config-airbnb"
+      "tslint-config-alloy"
     ],
     "rules": {
       "ter-indent": [
@@ -16,7 +16,19 @@
         {
             "SwitchCase": 1
         }
-      ]
-    }
+      ],
+      "no-unnecessary-type-assertion": null,
+      "no-for-in-array": null,
+      "no-unbound-method": null,
+      "return-undefined": null,
+      "no-unused-variable": null,
+      "no-use-before-declare": null,
+      "deprecation": null,
+      "prefer-const": true,
+      "no-plusplus": null // ++
+    },
+    "rulesDirectory": [
+      "node_modules/tslint-eslint-rules/dist/rules"
+    ]
   }
   

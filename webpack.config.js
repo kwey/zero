@@ -65,7 +65,7 @@ module.exports = (env = {}) => {
             config.plugins.push(
                 new ClosureCompilerPlugin({
                     compiler: {
-                        jar: jar,
+                        // jar: jar,
                         language_in: 'ECMASCRIPT5',
                         language_out: 'ECMASCRIPT5',
                         compilation_level: 'ADVANCED',

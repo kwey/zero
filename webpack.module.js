@@ -1,5 +1,6 @@
 const path = require('path');
 const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
 
 module.exports = {
     // 从 webpack 3.0.0 开始
@@ -38,6 +39,7 @@ module.exports = {
                     loader: 'css-loader',
                     options: {
                         sourceMap: false, // `sourceMap: true` option will cause some problems.
+                        importLoaders: 2,
                         minimize: {
                             discardComments: {removeAll: true},
                         },
@@ -46,8 +48,9 @@ module.exports = {
                 {
                     loader: 'postcss-loader',
                     options: {
+                        ident: 'postcss',
                         sourceMap: false,
-                        plugins: [autoprefixer],
+                        plugins: [autoprefixer, cssnano]
                     },
                 },
                 {
