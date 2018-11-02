@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const modules = require('./webpack.module');
-const ClosureCompilerPlugin = require('webpack-closure-compiler');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const pkg = require('./package.json');
 const git = require('git-rev-sync');
@@ -65,21 +64,6 @@ module.exports = (env = {}) => {
     }
     if (!env.dev) {
         if (env.gcc) {
-            // config.plugins.push(
-            //     new ClosureCompilerPlugin({
-            //         compiler: {
-            //             // jar: jar,
-            //             language_in: 'ECMASCRIPT5',
-            //             language_out: 'ECMASCRIPT5',
-            //             compilation_level: 'ADVANCED',
-            //             externs: [
-            //                 'google-closure/custom.js'
-            //             ]
-            //         },
-            //         concurrency: 3,
-            //         test: /index\.js$/,
-            //     })
-            // )
             config.optimization.minimizer.push(
                 new UglifyJsPlugin({
                     test: /\.js($|\?)/i,

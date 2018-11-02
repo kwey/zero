@@ -1,5 +1,6 @@
 
-import { ConfigInterface } from '../rebuild-config';
+import { ConfigInterface } from '../index';
+
 class Demo {
     prefix: string;
     container: HTMLElement;
