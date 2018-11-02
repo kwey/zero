@@ -10,10 +10,6 @@ class Demo {
         this.prefix = 'kwe';
         this.container.classList.add(this.prefix);
         this.init();
-        const aa = [1, 4, 5];
-        // for (const i in let) {
-        //     console.log(i);
-        // }
     }
 
     init() {
