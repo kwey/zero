@@ -19,6 +19,9 @@ module.exports = (env = {}) => {
         context: path.resolve(__dirname, 'src'),
         mode: mode,
         devtool: tool,
+        stats: {
+            modules: false,
+        },
         entry: { index:'./index.ts' },
         output: {
             path: path.resolve(__dirname, 'dist/'),
@@ -62,21 +65,21 @@ module.exports = (env = {}) => {
     }
     if (!env.dev) {
         if (env.gcc) {
-            config.plugins.push(
-                new ClosureCompilerPlugin({
-                    compiler: {
-                        // jar: jar,
-                        language_in: 'ECMASCRIPT5',
-                        language_out: 'ECMASCRIPT5',
-                        compilation_level: 'ADVANCED',
-                        externs: [
-                            'google-closure/custom.js'
-                        ]
-                    },
-                    concurrency: 3,
-                    test: /index\.js$/,
-                })
-            )
+            // config.plugins.push(
+            //     new ClosureCompilerPlugin({
+            //         compiler: {
+            //             // jar: jar,
+            //             language_in: 'ECMASCRIPT5',
+            //             language_out: 'ECMASCRIPT5',
+            //             compilation_level: 'ADVANCED',
+            //             externs: [
+            //                 'google-closure/custom.js'
+            //             ]
+            //         },
+            //         concurrency: 3,
+            //         test: /index\.js$/,
+            //     })
+            // )
             config.optimization.minimizer.push(
                 new UglifyJsPlugin({
                     test: /\.js($|\?)/i,
