@@ -5,8 +5,6 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const pkg = require('./package.json');
 const git = require('git-rev-sync');
 
-const jar = path.resolve(__dirname, 'node_modules/google-closure-compiler/compiler.jar');
-
 module.exports = (env = {}) => {
     let tool = '';
     let mode = 'production';

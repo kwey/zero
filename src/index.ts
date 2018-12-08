@@ -1,6 +1,5 @@
-// <reference path='../types/index.d.ts'/>
+/// <reference path='../types/index.d.ts'/>
 
-import '../types/index.d.ts';
 import './static/index.less';
 
 import index from './ts/index';
