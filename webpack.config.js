@@ -5,6 +5,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const pkg = require('./package.json');
 const git = require('git-rev-sync');
 
+
 module.exports = (env = {}) => {
     let tool = '';
     let mode = 'production';
@@ -23,8 +24,9 @@ module.exports = (env = {}) => {
         output: {
             path: path.resolve(__dirname, 'dist/'),
             filename: '[name].js',
-            library: 'demo',
+            library: 'KWE',
             libraryTarget: 'umd',
+            umdNamedDefine: true
         },
         module: modules,
         resolve: {
@@ -52,8 +54,9 @@ module.exports = (env = {}) => {
             compress: true,
             overlay: true,
             openPage: './demo/index.html',
+            disableHostCheck: true,
             port: 8080,
-            publicPath: '/dist/',
+            publicPath: '/demo/',
             headers: {
                 "X-Custom-Header": "yes",
                 'Access-Control-Allow-Origin': '*'
@@ -62,22 +65,22 @@ module.exports = (env = {}) => {
     }
     if (!env.dev) {
         if (env.gcc) {
+            // config.plugins.push(new BundleAnalyzerPlugin())
             config.optimization.minimizer.push(
                 new UglifyJsPlugin({
                     test: /\.js($|\?)/i,
                     uglifyOptions: {
-                        warnings: false,
-                        parse: {},
                         compress: {
                             warnings: false,
                             drop_debugger: true,
                             drop_console: true
                         },
-                        mangle: true, // Note `mangle.properties` is `false` by default.
-                        output: null,
-                        toplevel: false,
+                        output:{
+                            beautify: false,
+                            comments: false,
+                        },
+                        toplevel: true,
                         nameCache: null,
-                        ie8: false,
                         keep_fnames: false,
                     }
                 })

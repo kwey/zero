@@ -1,6 +1,6 @@
 {
   "name": "zero",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "zero",
   "main": "index.js",
   "repository": {
@@ -13,7 +13,7 @@
     "debug": "webpack --env.dev",
     "dev": "webpack-dev-server --hot --env.dev"
   },
-  "author": "",
+  "author": "KWE",
   "license": "ISC",
   "browserslist": [
     "last 2 versions",
@@ -22,17 +22,20 @@
     "not ie <= 8"
   ],
   "devDependencies": {
-    "@types/node": "^10.12.0",
     "@types/webpack": "^4.4.17",
+    "@types/node": "^10.12.0",
     "ajv": "^6.5.4",
     "autoprefixer": "^9.3.1",
+    "awesome-typescript-loader": "^5.2.1",
     "css-loader": "^1.0.0",
     "cssnano": "^4.1.7",
     "git-rev-sync": "^1.12.0",
-    "less": "^3.8.1",
+    "less": "^3.9.0",
     "less-loader": "^4.1.0",
     "postcss-loader": "^3.0.0",
     "style-loader": "^0.23.1",
+    "svgo-inline-loader": "0.0.6",
+    "template-string-optimize-loader": "^3.0.0",
     "ts-loader": "^5.2.2",
     "tslint": "^5.11.0",
     "tslint-config-alloy": "^0.1.0",

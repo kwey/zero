@@ -11,12 +11,11 @@ export interface ConfigInterface {
     metadata?: DataInterface;
 }
 
-export class Demo {
+class KWE {
     constructor(config: any) {
         config.metadata = metadata;
-        const d = new index(config);
-        console.log('object');
+        new index(config);
     }
 }
 
-window['Demo'] = Demo;
+export default KWE;

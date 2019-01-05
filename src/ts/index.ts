@@ -1,7 +1,7 @@
 
 import { ConfigInterface } from '../index';
 
-class Demo {
+class Index {
     prefix: string;
     container: HTMLElement;
     first: Function;
@@ -21,4 +21,4 @@ class Demo {
     }
 }
 
-export default Demo;
+export default Index;

@@ -3,18 +3,14 @@ const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 
 module.exports = {
-    // 从 webpack 3.0.0 开始
-    // noParse: function(content) {
-    //     return /jquery|lodash/.test(content);
-    // },
     rules: [
         {
             test: /\.tsx?$/,
-            include: [
-                path.resolve(__dirname, "src")
-            ],
             enforce: 'pre',
             use: [
+                // {
+                //     loader: 'template-string-optimize-loader',
+                // },
                 {
                     loader: 'ts-loader',
                 },
@@ -25,14 +21,12 @@ module.exports = {
         },
         {
             test: /\.less$/,
-            include: [
-                path.resolve(__dirname, "src")
-            ],
             use:[
                 {
                     loader: 'style-loader',
                     options: {
-                        attrs: {'data-injector': 'test'},
+                        attrs: {'data-injector': 'kwe-nav'},
+                        singleton: true,
                     },
                 },
                 {
@@ -61,9 +55,6 @@ module.exports = {
         },
         {
             test: /\.(png|jpg|gif|ttf|eot|woff)$/,
-            include: [
-                path.resolve(__dirname, "src")
-            ],
             use: [
                 {
                     loader: 'url-loader',

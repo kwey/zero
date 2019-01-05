@@ -1,35 +1,47 @@
 {
-    "linterOptions": {
-      "exclude": [
-        "node_modules/**",
-        "demo/**",
-        "dist/**"
-      ]
-    },
-    "extends": [
-      "tslint-config-alloy"
-    ],
-    "rules": {
-      "ter-indent": [
-        true,
-        4,
-        {
-            "SwitchCase": 1
-        }
-      ],
-      "no-unnecessary-type-assertion": null,
-      "no-for-in-array": null,
-      "no-unbound-method": null,
-      "return-undefined": null,
-      "no-unused-variable": null,
-      "no-use-before-declare": null,
-      "deprecation": null,
-      "prefer-const": true,
-      "no-plusplus": null, // ++
-      "no-reference": false
-    },
-    "rulesDirectory": [
-      "node_modules/tslint-eslint-rules/dist/rules"
+  "linterOptions": {
+    "exclude": [
+      "node_modules/**",
+      "demo/**",
+      "dist/**"
     ]
-  }
-  
+  },
+  "extends": [
+    "tslint-config-alloy"
+  ],
+  "rules": {
+    "ter-indent": [
+      true,
+      4,
+      {
+          "SwitchCase": 1
+      }
+    ],
+    "no-unnecessary-type-assertion": null,
+    "no-for-in-array": null,
+    "no-unbound-method": null,
+    "return-undefined": null,
+    "no-unused-variable": null,
+    "no-use-before-declare": null,
+    "deprecation": null,
+    "prefer-const": true,
+    // "no-plusplus": true, // ++
+    "no-reference": false,
+    "no-console": { 
+      "severity": "warning",
+      "options": [
+        "debug",
+        "info",
+        "time",
+        "timeEnd",
+        "trace"
+    ]
+    },
+    "number-literal-format": false,
+    "member-ordering": false, // static 方法必须在public之前
+    "no-unused-expression": false
+  },
+  "rulesDirectory": [
+    "node_modules/tslint-eslint-rules/dist/rules"
+  ]
+}
