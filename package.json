@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/KWEY/zero.git"
+    "url": "git+https://github.com/KWEY/zero.git"
   },
   "scripts": {
     "prebuild": "rm -rf dist",
@@ -21,6 +21,10 @@
     "> 1% in US",
     "not ie <= 8"
   ],
+  "bugs": {
+    "url": "https://github.com/KWEY/zero/issues"
+  },
+  "homepage": "https://github.com/KWEY/zero#readme",
   "devDependencies": {
     "@types/webpack": "^4.4.17",
     "@types/node": "^10.12.0",
