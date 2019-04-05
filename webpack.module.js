@@ -1,6 +1,6 @@
-const path = require('path');
-const autoprefixer = require('autoprefixer');
-const cssnano = require('cssnano');
+const path = require('path')
+const autoprefixer = require('autoprefixer')
+const cssnano = require('cssnano')
 
 module.exports = {
     rules: [
@@ -12,22 +12,22 @@ module.exports = {
                 //     loader: 'template-string-optimize-loader',
                 // },
                 {
-                    loader: 'ts-loader',
+                    loader: 'ts-loader'
                 },
                 {
-                    loader: 'tslint-loader',
+                    loader: 'tslint-loader'
                 }
             ]
         },
         {
             test: /\.less$/,
-            use:[
+            use: [
                 {
                     loader: 'style-loader',
                     options: {
-                        attrs: {'data-injector': 'kwe-nav'},
-                        singleton: true,
-                    },
+                        attrs: { 'data-injector': 'kwe-nav' },
+                        singleton: true
+                    }
                 },
                 {
                     loader: 'css-loader',
@@ -35,9 +35,9 @@ module.exports = {
                         sourceMap: false, // `sourceMap: true` option will cause some problems.
                         importLoaders: 2,
                         minimize: {
-                            discardComments: {removeAll: true},
-                        },
-                    },
+                            discardComments: { removeAll: true }
+                        }
+                    }
                 },
                 {
                     loader: 'postcss-loader',
@@ -45,12 +45,12 @@ module.exports = {
                         ident: 'postcss',
                         sourceMap: false,
                         plugins: [autoprefixer, cssnano]
-                    },
+                    }
                 },
                 {
                     loader: 'less-loader',
-                    options: {sourceMap: false},
-                },
+                    options: { sourceMap: false }
+                }
             ]
         },
         {
@@ -58,9 +58,9 @@ module.exports = {
             use: [
                 {
                     loader: 'url-loader',
-                    options: {limit: 819200},
-                },
-            ],
-        },
+                    options: { limit: 819200 }
+                }
+            ]
+        }
     ]
 }

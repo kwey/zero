@@ -10,6 +10,7 @@
     "tslint-config-alloy"
   ],
   "rules": {
+    // "indent":[true, "tabs", 2],
     "ter-indent": [
       true,
       4,
@@ -17,6 +18,7 @@
           "SwitchCase": 1
       }
     ],
+    "no-namespace": false,
     "no-unnecessary-type-assertion": null,
     "no-for-in-array": null,
     "no-unbound-method": null,
@@ -27,6 +29,12 @@
     "prefer-const": true,
     // "no-plusplus": true, // ++
     "no-reference": false,
+    "semicolon": [
+      true,
+      "never"
+    ],
+    "no-empty": false,
+    "cyclomatic-complexity": [false, 32],
     "no-console": { 
       "severity": "warning",
       "options": [
