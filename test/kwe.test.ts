@@ -17,9 +17,6 @@ describe('KWE tests', () => {
     beforeEach(() => {
         jest.clearAllMocks()
     })
-    test('Adding 1 + 1 equals 2', () => {
-        expect(kwe.test(1, 1)).toBe(2)
-    })
     // it('should set watching when calling the kwe constructor', () => {
     //     expect(kwe.test(1,2)).toBe(3)
     // })

@@ -8,7 +8,7 @@ import { metadata, DataInterface } from './metadata'
 export interface ConfigInterface {
     container: HTMLElement
     name: string
-    prefix: string
+    prefix?: string
     metadata?: DataInterface
 }
 
