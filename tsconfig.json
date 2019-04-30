@@ -36,5 +36,5 @@
         "lib": ["dom", "scripthost", "esnext"]
     },
     "include": ["**/*"],
-    "exclude": ["node_modules", "doc"]
+    "exclude": ["node_modules", "doc", "test"]
 }
