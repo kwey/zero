@@ -2,7 +2,7 @@
     "name": "zero",
     "version": "0.0.1",
     "description": "zero",
-    "main": "index.js",
+    "main": "index.ts",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/KWEY/zero.git"
@@ -10,8 +10,9 @@
     "scripts": {
         "prebuild": "rm -rf dist",
         "build": "webpack --env.gcc",
-        "debug": "webpack --env.dev",
-        "dev": "webpack-dev-server --hot --env.dev"
+        "debug": "webpack --env.dev -w",
+        "dev": "webpack-dev-server --hot --env.dev",
+        "test": "jest"
     },
     "author": "KWE",
     "license": "ISC",
@@ -26,20 +27,22 @@
     },
     "homepage": "https://github.com/KWEY/zero#readme",
     "devDependencies": {
-        "@types/webpack": "^4.4.17",
+        "@types/jest": "^24.0.11",
         "@types/node": "^10.12.0",
-        "ajv": "^6.5.4",
+        "@types/webpack": "^4.4.17",
         "autoprefixer": "^9.3.1",
-        "awesome-typescript-loader": "^5.2.1",
         "css-loader": "^1.0.0",
         "cssnano": "^4.1.7",
         "git-rev-sync": "^1.12.0",
+        "jest": "^24.7.1",
+        "jest-config": "^23.6.0",
         "less": "^3.9.0",
         "less-loader": "^4.1.0",
         "postcss-loader": "^3.0.0",
         "style-loader": "^0.23.1",
         "svgo-inline-loader": "0.0.6",
         "template-string-optimize-loader": "^3.0.0",
+        "ts-jest": "^24.0.2",
         "ts-loader": "^5.2.2",
         "tslint": "^5.11.0",
         "tslint-config-alloy": "^0.1.0",

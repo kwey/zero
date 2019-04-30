@@ -1,9 +1,14 @@
 {
     "compileOnSave": false,
     "compilerOptions": {
+        // "baseUrl": ".",
+        // "paths": {
+        //     "@/*": ["src/*"] // '@/*' 匹配到'src/*'
+        // },
+        // "allowJs": true,
         // "allowSyntheticDefaultImports": true, // 允许从没有设置默认导出的模块中默认导入。这并不影响代码的输出，仅为了类型检查。
         // "declaration": true, //生成相应的 .d.ts文件。
-        // "experimentalDecorators": true, // 启用实验性的ES装饰器。
+        "experimentalDecorators": true, // 启用实验性的ES装饰器。
         "esModuleInterop": true,
         // "emitDecoratorMetadata": true, // 给源码里的装饰器声明加上设计类型元数据。查看 issue #2577了解更多信息。
         // "importHelpers": true, // 	从 tslib 导入辅助工具函数（比如 __extends， __rest等）
@@ -31,5 +36,5 @@
         "lib": ["dom", "scripthost", "esnext"]
     },
     "include": ["**/*"],
-    "exclude": ["node_modules"]
+    "exclude": ["node_modules", "doc"]
 }

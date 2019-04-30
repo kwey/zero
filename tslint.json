@@ -3,7 +3,9 @@
     "exclude": [
       "node_modules/**",
       "demo/**",
-      "dist/**"
+      "doc/**",
+      "dist/**",
+      "test/**"
     ]
   },
   "extends": [

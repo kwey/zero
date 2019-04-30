@@ -2,20 +2,30 @@
 
 import './static/index.less'
 
-import index from './ts/index'
+import Main from './ts/main'
 import { metadata, DataInterface } from './metadata'
 
 export interface ConfigInterface {
     container: HTMLElement
     name: string
+    prefix: string
     metadata?: DataInterface
 }
 
 class KWE {
-    constructor(config: any) {
-        config.metadata = metadata
-        new index(config)
+    main: Main
+    config: ConfigInterface
+
+    constructor(config: ConfigInterface) {
+        this.config = {
+            metadata,
+            prefix: 'kwe',
+            ...config
+        }
+        this.init()
+    }
+    private init() {
+        this.main = new Main(this.config)
     }
 }
 export { KWE }
-
