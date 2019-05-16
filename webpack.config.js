@@ -1,7 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const modules = require('./webpack.module')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin');
 const pkg = require('./package.json')
 const git = require('git-rev-sync')
 
@@ -23,7 +23,6 @@ module.exports = (env = {}) => {
         output: {
             path: path.resolve(__dirname, 'dist/'),
             filename: '[name].js',
-            // library: 'KWE',
             libraryTarget: 'umd',
             umdNamedDefine: true
         },
@@ -66,22 +65,17 @@ module.exports = (env = {}) => {
         if (env.gcc) {
             // config.plugins.push(new BundleAnalyzerPlugin())
             config.optimization.minimizer.push(
-                new UglifyJsPlugin({
-                    test: /\.js($|\?)/i,
-                    uglifyOptions: {
+                new TerserPlugin({
+                    terserOptions: {
+                        ecma: 5,
                         compress: {
-                            warnings: false,
-                            drop_debugger: true,
-                            drop_console: true
+                            drop_console: true,
                         },
                         output: {
                             beautify: false,
-                            comments: false
                         },
                         toplevel: true,
-                        nameCache: null,
-                        keep_fnames: false
-                    }
+                    },
                 })
             )
         }

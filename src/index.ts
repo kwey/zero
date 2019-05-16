@@ -28,4 +28,5 @@ class KWE {
         this.main = new Main(this.config)
     }
 }
-export { KWE }
+window.KWE = KWE
+export default KWE
