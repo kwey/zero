@@ -8,9 +8,6 @@ module.exports = {
             test: /\.tsx?$/,
             enforce: 'pre',
             use: [
-                // {
-                //     loader: 'template-string-optimize-loader',
-                // },
                 {
                     loader: 'ts-loader'
                 },

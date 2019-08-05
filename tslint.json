@@ -12,7 +12,6 @@
     "tslint-config-alloy"
   ],
   "rules": {
-    // "indent":[true, "tabs", 2],
     "ter-indent": [
       true,
       4,

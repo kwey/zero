@@ -1,8 +1,8 @@
 export interface DataInterface {
     name: string
     version: string
-    hash: string
-    branch: string
+    // hash: string
+    // branch: string
     lastModefied: string
 }
 // @ts-ignore  for webpack global

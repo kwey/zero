@@ -6,16 +6,14 @@ const pkg = require('./package.json')
 const git = require('git-rev-sync')
 
 module.exports = (env = {}) => {
-    let tool = ''
     let mode = 'production'
     if (env.dev) {
-        tool = 'cheap-module-eval-source-map'
         mode = 'development'
     }
     const config = {
         context: path.resolve(__dirname, 'src'),
         mode: mode,
-        devtool: tool,
+        devtool: 'source-map',
         stats: {
             modules: false
         },
@@ -35,8 +33,8 @@ module.exports = (env = {}) => {
                 _METADATA_: JSON.stringify({
                     name: pkg.name,
                     version: pkg.version,
-                    hash: git.short(),
-                    branch: git.branch(),
+                    // hash: git.short(),
+                    // branch: git.branch(),
                     lastModefied: new Date().toISOString()
                 })
             })
@@ -61,24 +59,23 @@ module.exports = (env = {}) => {
             }
         }
     }
-    if (!env.dev) {
-        if (env.gcc) {
-            // config.plugins.push(new BundleAnalyzerPlugin())
-            config.optimization.minimizer.push(
-                new TerserPlugin({
-                    terserOptions: {
-                        ecma: 5,
-                        compress: {
-                            drop_console: true,
-                        },
-                        output: {
-                            beautify: false,
-                        },
-                        toplevel: true,
+    if (env.debug || env.gcc) {
+        // config.plugins.push(new BundleAnalyzerPlugin())
+        config.optimization.minimizer.push(
+            new TerserPlugin({
+                sourceMap: true,
+                terserOptions: {
+                    ecma: 5,
+                    compress: {
+                        drop_console: true,
                     },
-                })
-            )
-        }
+                    output: {
+                        beautify: false,
+                    },
+                    toplevel: true,
+                },
+            })
+        )
     }
 
     return config

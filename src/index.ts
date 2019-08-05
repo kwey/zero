@@ -12,7 +12,7 @@ export interface ConfigInterface {
     metadata?: DataInterface
 }
 
-class KWE {
+export default class KWE {
     main: Main
     config: ConfigInterface
 
@@ -24,9 +24,14 @@ class KWE {
         }
         this.init()
     }
+
     private init() {
         this.main = new Main(this.config)
     }
+
+    static metadata() {
+        return metadata
+    }
 }
+
 window.KWE = KWE
-export default KWE
