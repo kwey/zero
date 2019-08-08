@@ -1,4 +1,4 @@
-export interface DataInterface {
+export interface IData {
     name: string
     version: string
     // hash: string
@@ -6,4 +6,4 @@ export interface DataInterface {
     lastModefied: string
 }
 // @ts-ignore  for webpack global
-export const metadata: DataInterface = _METADATA_
+export const metadata: IData = _METADATA_

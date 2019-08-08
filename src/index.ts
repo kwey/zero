@@ -3,20 +3,20 @@
 import './static/index.less'
 
 import Main from './ts/main'
-import { metadata, DataInterface } from './metadata'
+import { metadata, IData } from './metadata'
 
-export interface ConfigInterface {
+export interface IConfig {
     container: HTMLElement
     name: string
     prefix?: string
-    metadata?: DataInterface
+    metadata?: IData
 }
-
+// 此模块建议只做模块的初始化，不做任何逻辑
 export default class KWE {
     main: Main
-    config: ConfigInterface
+    config: IConfig
 
-    constructor(config: ConfigInterface) {
+    constructor(config: IConfig) {
         this.config = {
             metadata,
             prefix: 'kwe',

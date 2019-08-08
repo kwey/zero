@@ -58,6 +58,24 @@ module.exports = {
                     options: { limit: 819200 }
                 }
             ]
+        },
+        {
+            test: /\.svg$/,
+            use: [
+                {
+                    loader: 'svgo-inline-loader',
+                    options: {
+                        plugins: [
+                            {
+                                removeDimensions: true
+                            },
+                            {
+                                removeViewBox: false
+                            }
+                        ]
+                    }
+                }
+            ]
         }
     ]
 }

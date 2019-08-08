@@ -1,6 +1,7 @@
 {
     "compileOnSave": false,
     "compilerOptions": {
+        "strict": true,
         // "baseUrl": ".",
         // "paths": {
         //     "@/*": ["src/*"] // '@/*' 匹配到'src/*'
@@ -33,8 +34,9 @@
         // 如果--lib没有指定默认注入的库的列表。默认注入的库为：
         // ► 针对于--target ES5：DOM，ES5，ScriptHost
         // ► 针对于--target ES6：DOM，ES6，DOM.Iterable，ScriptHost
-        "lib": ["dom", "scripthost", "esnext"]
+        "lib": ["dom", "scripthost", "esnext"],
+        "types": ["cypress"]
     },
     "include": ["**/*"],
-    "exclude": ["node_modules", "doc", "test"]
+    "exclude": ["node_modules", "doc", "__tests__"]
 }
