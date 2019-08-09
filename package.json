@@ -5,12 +5,12 @@
     "module": "./src/index.ts",
     "types": "./src/index.ts",
     "scripts": {
+        "jest": "jest",
+        "e2e": "npx cypress open",
         "prebuild": "rimraf dist",
         "build": "webpack --env.gcc",
-        "debug": "rimraf dist & webpack --env.debug -w",
         "dev": "webpack-dev-server --hot --env.dev",
-        "jest": "jest",
-        "e2e": "npx cypress open"
+        "debug": "rimraf dist & webpack --env.debug -w"
     },
     "author": "KWE",
     "license": "ISC",
