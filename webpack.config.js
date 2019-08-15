@@ -3,16 +3,12 @@ const webpack = require('webpack')
 const modules = require('./webpack.module')
 const TerserPlugin = require('terser-webpack-plugin');
 const pkg = require('./package.json')
-const git = require('git-rev-sync')
+// const git = require('git-rev-sync')
 
 module.exports = (env = {}) => {
-    let mode = 'production'
-    if (env.dev) {
-        mode = 'development'
-    }
     const config = {
         context: path.resolve(__dirname, 'src'),
-        mode: mode,
+        mode: env.dev ? 'development' : 'production',
         devtool: 'source-map',
         stats: {
             modules: false

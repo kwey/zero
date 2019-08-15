@@ -1,6 +1,6 @@
 /// <reference path='../types/index.d.ts'/>
 
-import './static/index.less'
+import './static/index.less';
 
 import Main from './ts/main'
 import { metadata, IData } from './metadata'
