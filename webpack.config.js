@@ -1,15 +1,25 @@
 const path = require('path')
 const webpack = require('webpack')
 const modules = require('./webpack.module')
-const TerserPlugin = require('terser-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin')
 const pkg = require('./package.json')
 // const git = require('git-rev-sync')
 
+// 统计打包时间
+// const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
+// const smp = new SpeedMeasurePlugin();
+
 module.exports = (env = {}) => {
+    let mode = 'development'
+    let tool = 'cheap-module-source-map'
+    if (env.gcc) {
+        tool = 'source-map'
+        mode = 'production'
+    }
     const config = {
         context: path.resolve(__dirname, 'src'),
-        mode: env.dev ? 'development' : 'production',
-        devtool: 'source-map',
+        mode: mode,
+        devtool: tool,
         stats: {
             modules: false
         },
@@ -55,24 +65,28 @@ module.exports = (env = {}) => {
             }
         }
     }
-    if (env.debug || env.gcc) {
+    if (env.gcc || env.debug) {
         // config.plugins.push(new BundleAnalyzerPlugin())
         config.optimization.minimizer.push(
             new TerserPlugin({
                 sourceMap: true,
+                cache: true,
+                parallel: true,
                 terserOptions: {
                     ecma: 5,
                     compress: {
-                        drop_console: true,
+                        drop_console: true
                     },
                     output: {
-                        beautify: false,
+                        beautify: false
                     },
-                    toplevel: true,
-                },
+                    toplevel: true
+                }
             })
         )
     }
 
     return config
+    // 统计打包时间
+    // return smp.wrap(config);
 }
