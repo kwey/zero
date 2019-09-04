@@ -6,15 +6,12 @@ module.exports = {
     rules: [
         {
             test: /\.tsx?$/,
+            exclude: [/node_modules/],
             enforce: 'pre',
-            use: [
-                {
-                    loader: 'ts-loader'
-                },
-                {
-                    loader: 'tslint-loader'
-                }
-            ]
+            loader: 'ts-loader',
+            options: {
+                happyPackMode: true
+            }
         },
         {
             test: /\.less$/,

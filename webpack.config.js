@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const modules = require('./webpack.module')
 const TerserPlugin = require('terser-webpack-plugin')
 const pkg = require('./package.json')
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 // const git = require('git-rev-sync')
 
 // 统计打包时间
@@ -35,6 +36,9 @@ module.exports = (env = {}) => {
             extensions: ['.tsx', '.ts', '.js']
         },
         plugins: [
+            new ForkTsCheckerWebpackPlugin({
+                tsconfig: path.resolve(__dirname, 'tsconfig.json')
+            }),
             new webpack.DefinePlugin({
                 _METADATA_: JSON.stringify({
                     name: pkg.name,
