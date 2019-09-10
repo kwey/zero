@@ -2,8 +2,8 @@
 
 import './static/index.less'
 
+import metadata, { IData } from './metadata'
 import Main from './ts/main'
-import { metadata, IData } from './metadata'
 
 export interface IConfig {
     container: string

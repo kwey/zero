@@ -1,38 +1,25 @@
 {
     "linterOptions": {
-        "exclude": ["node_modules/**", "demo/**", "doc/**", "dist/**", "test/**"]
+        "exclude": ["node_modules", "demo", "doc", "dist", "test"]
     },
-    "extends": ["tslint-config-alloy"],
+    "extends": ["tslint-config-alloy", "tslint-config-prettier"],
     "rules": {
-        "ter-indent": [
-            true,
-            4,
-            {
-                "SwitchCase": 1
-            }
-        ],
-        "no-namespace": false,
-        "no-unnecessary-type-assertion": null,
-        "no-for-in-array": null,
-        "no-unbound-method": null,
-        "return-undefined": null,
-        "no-unused-variable": null,
-        "no-use-before-declare": null,
-        "deprecation": null,
+        "max-line-length": {
+            "options": [150]
+        },
+        "member-access": false,
+        "strict-type-predicates": true,
+        "no-angle-bracket-type-assertion": false,
         "prefer-const": true,
-        // "no-plusplus": true, // ++
         "no-reference": false,
+        "no-magic-numbers": false,
         "semicolon": [true, "never"],
-        "no-empty": false,
         "cyclomatic-complexity": [false, 32],
         "no-console": {
             "severity": "warning",
             "options": ["debug", "info", "time", "timeEnd", "trace"]
         },
         "interface-name": [true, "always-prefix"],
-        "number-literal-format": false,
-        "member-ordering": false, // static 方法必须在public之前
-        "no-unused-expression": false
-    },
-    "rulesDirectory": ["node_modules/tslint-eslint-rules/dist/rules"]
+        "member-ordering": false // static 方法必须在public之前
+    }
 }

@@ -1,6 +1,6 @@
 import { IConfig } from '..'
-import Utils from './utils'
 import searchSvg from '../static/img/search.svg'
+import Utils from './utils'
 
 interface ITemplete {
     input: HTMLInputElement

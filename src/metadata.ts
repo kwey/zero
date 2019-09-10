@@ -6,4 +6,4 @@ export interface IData {
     lastModefied: string
 }
 // @ts-ignore  for webpack global
-export const metadata: IData = _METADATA_
+export default _METADATA_
