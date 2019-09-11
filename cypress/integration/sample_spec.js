@@ -1,4 +1,5 @@
 // doc: https://docs.cypress.io/zh-cn/guides/overview/why-cypress.html
+/// <reference types="Cypress" />
 
 describe('Hooks', () => {
     before(() => {
