@@ -10,7 +10,7 @@ module.exports = {
             enforce: 'pre',
             loader: 'ts-loader',
             options: {
-                happyPackMode: true
+                transpileOnly: true
             }
         },
         {

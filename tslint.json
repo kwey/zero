@@ -12,6 +12,7 @@
         "no-angle-bracket-type-assertion": false,
         "prefer-const": true,
         "no-reference": false,
+        "no-unused-expression": false,
         "no-magic-numbers": false,
         "semicolon": [true, "never"],
         "cyclomatic-complexity": [false, 32],
