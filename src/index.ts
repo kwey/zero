@@ -33,5 +33,3 @@ export default class KWE {
         return metadata
     }
 }
-
-window.KWE = KWE

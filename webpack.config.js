@@ -28,8 +28,10 @@ module.exports = (env = {}) => {
         output: {
             path: path.resolve(__dirname, 'dist/'),
             filename: '[name].js',
+            library: 'KWE',
             libraryTarget: 'umd',
-            umdNamedDefine: true
+            umdNamedDefine: true,
+            libraryExport: 'default'
         },
         module: modules,
         resolve: {
@@ -69,7 +71,7 @@ module.exports = (env = {}) => {
             }
         }
     }
-    if (env.gcc || env.debug) {
+    if (env.gcc) {
         // config.plugins.push(new BundleAnalyzerPlugin())
         config.optimization.minimizer.push(
             new TerserPlugin({
