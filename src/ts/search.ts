@@ -1,18 +1,17 @@
 import { IConfig } from '..'
 import searchSvg from '../static/img/search.svg'
-import Utils from './utils'
+import Utils from './common/utils'
 
 interface ITemplete {
     input: HTMLInputElement
     btn: HTMLButtonElement
     list: HTMLUListElement
 }
-// 此模块建议只做模块的初始化，不做任何逻辑
 export default class Search {
-    prefix: string
-    config: IConfig
-    container: HTMLElement
-    templete: ITemplete
+    private prefix: string
+    private config: IConfig
+    private container: HTMLElement
+    private templete: ITemplete
 
     constructor(config: IConfig) {
         this.config = config
@@ -23,7 +22,7 @@ export default class Search {
         this.events()
     }
 
-    init() {
+    private init() {
         this.container.innerHTML = this.tpl()
         this.templete = {
             input: this.container.querySelector(`.${this.prefix}-text`),

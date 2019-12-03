@@ -9,7 +9,7 @@ class Utils {
             .replace(/\//g, '&#x2F;')
     }
 
-    static parseDom(arg: string): any {
+    static parseDom(arg: string): Node {
         const objE = document.createElement('div')
         objE.innerHTML = arg
         return objE.childNodes[0]

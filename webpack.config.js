@@ -12,15 +12,13 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 
 module.exports = (env = {}) => {
     let mode = 'development'
-    let tool = 'cheap-module-source-map'
     if (env.gcc) {
-        tool = 'source-map'
         mode = 'production'
     }
     const config = {
         context: path.resolve(__dirname, 'src'),
         mode: mode,
-        devtool: tool,
+        devtool: 'cheap-module-source-map',
         stats: {
             modules: false
         },

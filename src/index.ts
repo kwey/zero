@@ -1,5 +1,3 @@
-/// <reference path='../types/index.d.ts'/>
-
 import './static/index.less'
 
 import metadata, { IData } from './metadata'
@@ -13,8 +11,8 @@ export interface IConfig {
 }
 
 export default class KWE {
+    private config: IConfig
     main: Main
-    config: IConfig
 
     constructor(config: IConfig) {
         this.config = {
