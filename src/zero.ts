@@ -11,8 +11,8 @@ export interface IConfig {
 }
 
 export default class KWE {
-    private config: IConfig
-    main: Main
+    private config: Required<IConfig>
+    main!: Main
 
     constructor(config: IConfig) {
         this.config = {

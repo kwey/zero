@@ -18,6 +18,7 @@ module.exports = {
         '@typescript-eslint/explicit-member-accessibility': 0,
         '@typescript-eslint/camelcase': 'error',
         '@typescript-eslint/member-ordering': 'off',
+        '@typescript-eslint/consistent-type-assertions': 'off',
         '@typescript-eslint/no-explicit-any': 'error'
     }
 }

@@ -1,4 +1,4 @@
-import { IConfig } from '..'
+import { IConfig } from '../zero'
 import searchSvg from '../static/img/search.svg'
 import Utils from './common/utils'
 
@@ -9,14 +9,14 @@ interface ITemplete {
 }
 export default class Search {
     private prefix: string
-    private config: IConfig
+    private config: Required<IConfig>
     private container: HTMLElement
-    private templete: ITemplete
+    private templete!: ITemplete
 
-    constructor(config: IConfig) {
+    constructor(config: Required<IConfig>) {
         this.config = config
         this.prefix = config.prefix
-        this.container = document.querySelector(config.container)
+        this.container = <HTMLElement>document.querySelector(config.container)
         this.container.classList.add(this.config.prefix)
         this.init()
         this.events()
@@ -25,9 +25,9 @@ export default class Search {
     private init() {
         this.container.innerHTML = this.tpl()
         this.templete = {
-            input: this.container.querySelector(`.${this.prefix}-text`),
-            btn: this.container.querySelector(`.${this.prefix}-btn`),
-            list: this.container.querySelector(`.${this.prefix}-list`)
+            input: <HTMLInputElement>this.container.querySelector(`.${this.prefix}-text`),
+            btn: <HTMLButtonElement>this.container.querySelector(`.${this.prefix}-btn`),
+            list: <HTMLUListElement>this.container.querySelector(`.${this.prefix}-list`)
         }
     }
 

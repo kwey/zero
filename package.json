@@ -10,7 +10,7 @@
         "prebuild": "rimraf dist",
         "build": "webpack --env.gcc",
         "dev": "webpack-dev-server --hot --env.dev",
-        "debug": "rimraf dist & webpack --env.debug -w"
+        "start": "rimraf dist & webpack --env.debug -w"
     },
     "author": "KWE",
     "license": "ISC",

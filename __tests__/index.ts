@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import Utils from '../src/ts/utils'
+import Utils from '../src/ts/common/utils'
 
 test('Utils test', () => {
     expect(1 + 2).to.equal(3)

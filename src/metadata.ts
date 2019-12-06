@@ -6,4 +6,5 @@ export interface IData {
     lastModefied: string
 }
 // @ts-ignore  for webpack global
+// eslint-disable-next-line no-undef
 export default _METADATA_
