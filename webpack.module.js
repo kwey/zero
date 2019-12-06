@@ -19,18 +19,15 @@ module.exports = {
                 {
                     loader: 'style-loader',
                     options: {
-                        attrs: { 'data-injector': 'kwe-nav' },
-                        singleton: true
+                        attributes: { 'data-injector': 'kwe-nav' },
+                        injectType: 'singletonStyleTag'
                     }
                 },
                 {
                     loader: 'css-loader',
                     options: {
                         sourceMap: false, // `sourceMap: true` option will cause some problems.
-                        importLoaders: 2,
-                        minimize: {
-                            discardComments: { removeAll: true }
-                        }
+                        importLoaders: 2
                     }
                 },
                 {
