@@ -1,4 +1,4 @@
-import { IConfig } from '../zero'
+import { IConfig } from '..'
 import searchSvg from '../static/img/search.svg'
 import Utils from './common/utils'
 

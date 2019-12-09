@@ -1,7 +1,7 @@
 import './static/index.less'
 
 import metadata, { IData } from './metadata'
-import Main from './ts/main'
+import Zero from './ts/zero'
 
 export interface IConfig {
     container: string
@@ -12,7 +12,7 @@ export interface IConfig {
 
 export default class KWE {
     private config: Required<IConfig>
-    main!: Main
+    zero!: Zero
 
     constructor(config: IConfig) {
         this.config = {
@@ -24,7 +24,7 @@ export default class KWE {
     }
 
     private init() {
-        this.main = new Main(this.config)
+        this.zero = new Zero(this.config)
     }
 
     static metadata() {
