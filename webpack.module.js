@@ -1,4 +1,3 @@
-const path = require('path')
 const autoprefixer = require('autoprefixer')
 const cssnano = require('cssnano')
 
@@ -26,7 +25,7 @@ module.exports = {
                 {
                     loader: 'css-loader',
                     options: {
-                        sourceMap: false, // `sourceMap: true` option will cause some problems.
+                        sourceMap: false,
                         importLoaders: 2
                     }
                 },

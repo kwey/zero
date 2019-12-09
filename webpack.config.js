@@ -22,7 +22,7 @@ module.exports = (env = {}) => {
         stats: {
             modules: false
         },
-        entry: { zero: './index.ts' },
+        entry: { kwe: './index.ts' },
         output: {
             path: path.resolve(__dirname, 'dist/'),
             filename: '[name].js',
