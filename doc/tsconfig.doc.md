@@ -1,3 +1,4 @@
+```
 {
     "compileOnSave": false,
     "compilerOptions": {
@@ -40,3 +41,4 @@
     "include": ["**/*"],
     "exclude": ["node_modules", "doc", "__tests__"]
 }
+```

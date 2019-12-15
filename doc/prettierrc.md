@@ -1,6 +1,6 @@
-
 // doc https://prettier.io/docs/en/options.html
 
+```
 {
   "printWidth": 80, //一行的字符数，如果超过会进行换行，默认为80
 
@@ -14,8 +14,8 @@
 
   "parser": "babylon", //代码的解析引擎，默认为babylon，与babel相同。
 
-  "semi": true, // 在语句末尾打印分号, 
-  // true-在每个语句的末尾添加分号。 
+  "semi": true, // 在语句末尾打印分号,
+  // true-在每个语句的末尾添加分号。
   // false-只在可能导致ASI失败的行的开头添加分号。
 
   "quoteProps": "as-needed",// 当引用对象中的属性时进行更改。
@@ -52,12 +52,12 @@
   // "always" - Always include parens. Example: (x) => x
 
   // 只格式化文件的一段。(开始于结束的位置)
-  "rangeStart": 0, 
+  "rangeStart": 0,
   "rangeEnd": Infinity,
 
   // parser: None, // 看文档
   filepath: None, // 指定用于推断要使用哪个分析器的文件名。看文档
-  
+
   "requirePragma": false, // prettier只能将自己限制为在文件顶部包含特殊注释（称为pragma）的格式文件。
 
   "insertPragma": false,
@@ -85,3 +85,4 @@
   // “crlf”-回车+换行符（\r\n），在Windows上常见
   // “cr”-仅回车字符（\r），很少使用
 }
+```
