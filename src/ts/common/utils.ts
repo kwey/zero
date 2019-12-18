@@ -9,10 +9,22 @@ class Utils {
             .replace(/\//g, '&#x2F;')
     }
 
-    static parseDom(arg: string): Node {
-        const objE = document.createElement('div')
-        objE.innerHTML = arg
-        return objE.childNodes[0]
+    static supportCss3(style: string) {
+        const prefix = ['', 'webkit-', 'Moz-', 'ms-', 'o-']
+        const htmlStyle = document.documentElement.style
+        const toHumb = (str: string) => {
+            return str.replace(/-(\w)/g, ($0, $1) => {
+                return $1.toUpperCase()
+            })
+        }
+        let name = ''
+        for (const ele of prefix) {
+            name = toHumb(ele + style)
+            if (name in htmlStyle) {
+                return ele ? `-${ele + style}` : style
+            }
+        }
+        return false
     }
 }
 

@@ -44,8 +44,8 @@ export default class Search {
     }
 
     private appendList() {
-        const li = Utils.parseDom(`<li>${Utils.htmlEscape(this.templete.input.value)}</li>`)
-        this.templete.list.appendChild(li)
+        const li = `<li>${Utils.htmlEscape(this.templete.input.value)}</li>`
+        this.templete.list.insertAdjacentHTML('beforeend', li)
         this.templete.input.value = ''
     }
 
