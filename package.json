@@ -36,7 +36,7 @@
         "@types/webpack": "4.41.0",
         "@typescript-eslint/eslint-plugin": "2.10.0",
         "@typescript-eslint/parser": "2.10.0",
-        "acorn": "7.1.0",
+        "acorn": "7.1.1",
         "autoprefixer": "9.7.3",
         "chai": "4.2.0",
         "css-loader": "3.2.1",
