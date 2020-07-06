@@ -31,7 +31,7 @@ module.exports = (env = {}) => {
             umdNamedDefine: true,
             libraryExport: 'default'
         },
-        module: modules,
+        module: modules(env),
         resolve: {
             extensions: ['.tsx', '.ts', '.js']
         },
