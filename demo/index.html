@@ -10,6 +10,8 @@
             html,
             body,
             .kwe {
+                margin: 0;
+                padding: 0;
                 width: 100%;
                 height: 100%;
                 text-align: center;
@@ -17,11 +19,11 @@
         </style>
     </head>
     <body>
-        <div class="kwe">demo</div>
-        <script src="./kwe.js"></script>
+        <div class="kwe"></div>
+        <script src="../dist/kwe.js"></script>
         <script>
             new KWE({
-                container: '.kwe',
+                container: document.querySelector('.kwe'),
                 name: '123'
             })
         </script>

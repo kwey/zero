@@ -15,8 +15,9 @@ module.exports = {
         // myGlobal: false
     },
     rules: {
+        "camelcase": [2, {"properties": "always"}] ,
         '@typescript-eslint/explicit-member-accessibility': 0,
-        '@typescript-eslint/camelcase': 'error',
+        // '@typescript-eslint/camelcase': 'error',
         '@typescript-eslint/member-ordering': 'off',
         '@typescript-eslint/consistent-type-assertions': 'off',
         '@typescript-eslint/no-explicit-any': 'error'

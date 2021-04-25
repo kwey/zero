@@ -1,39 +1,51 @@
 const path = require('path')
 const webpack = require('webpack')
+const git = require('git-rev-sync')
+const pkg = require('./package.json')
 const modules = require('./webpack.module')
 const TerserPlugin = require('terser-webpack-plugin')
-const pkg = require('./package.json')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
-// const git = require('git-rev-sync')
 
 // 统计打包时间
-// const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
-// const smp = new SpeedMeasurePlugin();
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
+const smp = new SpeedMeasurePlugin()
 
-module.exports = (env = {}) => {
-    let mode = 'development'
-    if (env.gcc) {
-        mode = 'production'
-    }
+// env 文档
+// https://webpack.docschina.org/api/cli/#environment-options
+// webpack-cli  3 和 4  env的传参形式不同
+// 3： --env.gcc
+// 4： --env gcc
+
+// argv 文档
+// https://webpack.docschina.org/api/cli/#flags
+
+module.exports = (env, argv) => {
+    const pro = env?.gcc
+    let mode = pro ? 'production' : 'development'
+    let publicPath = pro ? 'http://localhost:9000/zero/dist/' : '/zero/dist/'
+
     const config = {
-        context: path.resolve(__dirname, 'src'),
-        mode: mode,
+        mode,
+        node: false,
         devtool: 'cheap-module-source-map',
         stats: {
-            modules: false
+            modules: false,
         },
-        entry: { kwe: './index.ts' },
+        entry: { kwe: './src/index.ts' },
         output: {
+            // https://webpack.docschina.org/configuration/output/#outputpublicpath
+            publicPath,
             path: path.resolve(__dirname, 'dist/'),
             filename: '[name].js',
             library: 'KWE',
             libraryTarget: 'umd',
             umdNamedDefine: true,
-            libraryExport: 'default'
+            libraryExport: 'default',
+            chunkFilename: pro ? 'plugins-[name].[contenthash:6].js' : 'plugins-[name].js',
         },
         module: modules(env),
         resolve: {
-            extensions: ['.tsx', '.ts', '.js']
+            extensions: ['.tsx', '.ts', '.js'],
         },
         plugins: [
             new ForkTsCheckerWebpackPlugin({
@@ -43,54 +55,59 @@ module.exports = (env = {}) => {
                 _METADATA_: JSON.stringify({
                     name: pkg.name,
                     version: pkg.version,
-                    // hash: git.short(),
-                    // branch: git.branch(),
-                    lastModefied: new Date().toISOString()
-                })
-            })
+                    hash: git.short(),
+                    branch: git.branch(),
+                    lastModefied: new Date().toISOString(),
+                }),
+            }),
         ],
         optimization: {
-            minimizer: []
+            minimizer: [],
         },
         watchOptions: {
-            ignored: /node_modules/
+            ignored: /node_modules/,
         },
-        node: false,
+
         devServer: {
+            publicPath,
             compress: true,
             overlay: true,
-            openPage: './demo/index.html',
             disableHostCheck: true,
-            port: 8080,
-            publicPath: '/demo/',
+            port: 9090,
             headers: {
                 'X-Custom-Header': 'yes',
-                'Access-Control-Allow-Origin': '*'
-            }
-        }
+                'Access-Control-Allow-Origin': '*',
+            },
+            // open: 'Google Chrome',
+            // openPage: '/demo/index.html'
+            // writeToDisk: true,
+        },
     }
-    if (env.gcc) {
+    if (pro) {
+        config.optimization.minimize = true
         // config.plugins.push(new BundleAnalyzerPlugin())
         config.optimization.minimizer.push(
+            // https://webpack.docschina.org/plugins/terser-webpack-plugin/
+            // new TerserPlugin()
             new TerserPlugin({
-                sourceMap: true,
-                cache: true,
-                parallel: true,
                 terserOptions: {
+                    // https://github.com/terser/terser#minify-options
+                    sourceMap: true,
                     ecma: 5,
                     compress: {
-                        drop_console: true
+                        drop_console: true,
                     },
                     output: {
-                        beautify: false
+                        beautify: false,
                     },
-                    toplevel: true
-                }
+                    // 删除未使用的变量和函数。
+                    toplevel: true,
+                },
             })
         )
     }
 
-    return config
+    // return config
     // 统计打包时间
-    // return smp.wrap(config);
+    return smp.wrap(config)
 }

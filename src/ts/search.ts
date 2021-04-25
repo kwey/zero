@@ -16,18 +16,19 @@ export default class Search {
     constructor(config: Required<IConfig>) {
         this.config = config
         this.prefix = config.prefix
-        this.container = <HTMLElement>document.querySelector(config.container)
+        this.container = config.container
         this.container.classList.add(this.config.prefix)
         this.init()
         this.events()
+        console.log('object')
     }
 
     private init() {
-        this.container.innerHTML = this.tpl()
+        this.container.insertAdjacentHTML('beforeend', this.tpl())
         this.templete = {
             input: <HTMLInputElement>this.container.querySelector(`.${this.prefix}-text`),
             btn: <HTMLButtonElement>this.container.querySelector(`.${this.prefix}-btn`),
-            list: <HTMLUListElement>this.container.querySelector(`.${this.prefix}-list`)
+            list: <HTMLUListElement>this.container.querySelector(`.${this.prefix}-list`),
         }
     }
 
@@ -43,8 +44,8 @@ export default class Search {
         })
     }
 
-    private appendList() {
-        const li = `<li>${Utils.htmlEscape(this.templete.input.value)}</li>`
+    appendList(str = this.templete.input.value) {
+        const li = `<li>${Utils.htmlEscape(str)}</li>`
         this.templete.list.insertAdjacentHTML('beforeend', li)
         this.templete.input.value = ''
     }

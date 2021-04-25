@@ -2,6 +2,7 @@ const autoprefixer = require('autoprefixer')
 const cssnano = require('cssnano')
 
 module.exports = env => {
+    const isDev = !env?.gcc
     return {
         rules: [
             {
@@ -10,13 +11,13 @@ module.exports = env => {
                     {
                         loader: 'ts-loader',
                         options: {
-                            transpileOnly: !env.gcc,
+                            transpileOnly: isDev,
                             compilerOptions: {
-                                module: 'esnext'
-                            }
-                        }
-                    }
-                ]
+                                module: 'esnext',
+                            },
+                        },
+                    },
+                ],
             },
             {
                 test: /\.less$/,
@@ -25,38 +26,47 @@ module.exports = env => {
                         loader: 'style-loader',
                         options: {
                             attributes: { 'data-injector': 'kwe-zero' },
-                            injectType: 'singletonStyleTag'
-                        }
+                            // 添加如下属性 会导致css map 失效
+                            // 插件里面添加的样式 写到一个style 标签下
+                            // injectType: 'singletonStyleTag',
+                        },
                     },
                     {
                         loader: 'css-loader',
                         options: {
-                            sourceMap: false,
-                            importLoaders: 2
-                        }
+                            sourceMap: isDev,
+
+                            importLoaders: 2,
+                            // 会重命名classname，需要配合
+                            // modules: true,
+                        },
                     },
                     {
                         loader: 'postcss-loader',
                         options: {
-                            ident: 'postcss',
-                            sourceMap: false,
-                            plugins: [autoprefixer, cssnano]
-                        }
+                            sourceMap: isDev,
+                            postcssOptions: {
+                                plugins: [
+                                    [autoprefixer, {}],
+                                    [cssnano, {}],
+                                ],
+                            },
+                        },
                     },
                     {
                         loader: 'less-loader',
-                        options: { sourceMap: false }
-                    }
-                ]
+                        options: { sourceMap: isDev },
+                    },
+                ],
             },
             {
                 test: /\.(png|jpg|gif|ttf|eot|woff)$/,
                 use: [
                     {
                         loader: 'url-loader',
-                        options: { limit: 819200 }
-                    }
-                ]
+                        options: { limit: 819200 },
+                    },
+                ],
             },
             {
                 test: /\.svg$/,
@@ -66,16 +76,16 @@ module.exports = env => {
                         options: {
                             plugins: [
                                 {
-                                    removeDimensions: true
+                                    removeDimensions: true,
                                 },
                                 {
-                                    removeViewBox: false
-                                }
-                            ]
-                        }
-                    }
-                ]
-            }
-        ]
+                                    removeViewBox: false,
+                                },
+                            ],
+                        },
+                    },
+                ],
+            },
+        ],
     }
 }

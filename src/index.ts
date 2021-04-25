@@ -4,13 +4,14 @@ import metadata, { IData } from './metadata'
 import Zero from './ts/zero'
 
 export interface IConfig {
-    container: string
+    container: HTMLElement
     name: string
     prefix?: string
     metadata?: IData
 }
 
 export default class KWE {
+    static metadata = metadata
     private config: Required<IConfig>
     zero!: Zero
 
@@ -25,9 +26,5 @@ export default class KWE {
 
     private init() {
         this.zero = new Zero(this.config)
-    }
-
-    static metadata() {
-        return metadata
     }
 }
