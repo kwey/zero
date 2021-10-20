@@ -7,7 +7,7 @@ import Test from '../../plugins/test'
 export default class Zero {
     private config: Required<IConfig>
     private asyncPromise!: Promise<typeof Test>
-    private test: Test | undefined
+    private test: Test
     search!: Search
 
     constructor(config: Required<IConfig>) {
@@ -25,7 +25,7 @@ export default class Zero {
         const async = container.querySelector(`.${prefix}-async`)
 
         async!.addEventListener('click', () => {
-            if (this.asyncPromise || this.test) {
+            if (this.asyncPromise) {
                 this.runTest()
                 return;
             }

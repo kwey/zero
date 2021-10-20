@@ -4,5 +4,5 @@ interface Window {
 }
 
 declare module '*.svg' {
-    export default string
+    export default String
 }
