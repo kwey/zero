@@ -73,7 +73,7 @@ module.exports = (env, argv) => {
             compress: true,
             overlay: true,
             disableHostCheck: true,
-            port: 9090,
+            port: 8072,
             headers: {
                 'X-Custom-Header': 'yes',
                 'Access-Control-Allow-Origin': '*',
