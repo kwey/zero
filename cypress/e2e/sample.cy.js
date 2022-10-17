@@ -21,7 +21,7 @@ describe('Hooks', () => {
 
 describe('The Home Page', () => {
     beforeEach(() => {
-        cy.visit('/demo/') // change URL to match your dev URL
+        cy.visit('/') // change URL to match your dev URL
     })
 
     const prefix = 'kwe'

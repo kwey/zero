@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
@@ -20,9 +21,9 @@
 	</head>
 	<body>
 		<div class="kwe"></div>
-		<script src="./demo/kwe.js"></script>
-		<!-- <script src="../dist/kwe.js"></script> -->
-		<script>
+		<script type="module">
+			import KWE from '../dist/kwe.js'
+
 			new KWE({
 				container: document.querySelector('.kwe'),
 				name: '123',

@@ -12,6 +12,7 @@ module.exports = env => {
                         loader: 'ts-loader',
                         options: {
                             transpileOnly: isDev,
+                            allowTsInNodeModules: true,
                             compilerOptions: {
                                 module: 'esnext',
                             },

@@ -1,5 +1,6 @@
 
 *.js
+*.ts
 
 __tests__/*
 types/*
