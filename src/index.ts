@@ -6,7 +6,6 @@ import { Zero } from './ts/zero'
 export interface IConfig {
 	container: HTMLElement
 	name: string
-	prefix?: string
 	metadata?: IData
 }
 
@@ -18,7 +17,6 @@ export default class KWE {
 	constructor(config: IConfig) {
 		this.config = {
 			metadata,
-			prefix: 'kwe',
 			...config,
 		}
 		this.init()

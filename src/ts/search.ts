@@ -1,6 +1,6 @@
 import { IConfig } from '..'
 import searchSvg from '../static/img/search.svg'
-import { htmlEscape } from './common'
+import { htmlEscape, PPX } from './common'
 
 interface ITemplete {
 	input: HTMLInputElement
@@ -8,27 +8,24 @@ interface ITemplete {
 	list: HTMLUListElement
 }
 export class Search {
-	private prefix: string
 	private config: Required<IConfig>
 	private container: HTMLElement
 	private templete!: ITemplete
 
 	constructor(config: Required<IConfig>) {
 		this.config = config
-		this.prefix = config.prefix
 		this.container = config.container
-		this.container.classList.add(this.config.prefix)
+		this.container.classList.add(PPX)
 		this.init()
 		this.events()
-		console.log('object')
 	}
 
 	private init() {
 		this.container.insertAdjacentHTML('beforeend', this.tpl())
 		this.templete = {
-			input: <HTMLInputElement>this.container.querySelector(`.${this.prefix}-text`),
-			btn: <HTMLButtonElement>this.container.querySelector(`.${this.prefix}-btn`),
-			list: <HTMLUListElement>this.container.querySelector(`.${this.prefix}-list`),
+			input: <HTMLInputElement>this.container.querySelector(`.${PPX}-text`),
+			btn: <HTMLButtonElement>this.container.querySelector(`.${PPX}-btn`),
+			list: <HTMLUListElement>this.container.querySelector(`.${PPX}-list`),
 		}
 	}
 
@@ -51,11 +48,11 @@ export class Search {
 	}
 
 	private tpl() {
-		return `<h1 class="${this.prefix}-header">TYPESCRIPT DEMO</h1>
-            <div class="${this.prefix}-search">
-                <input type="text" class="${this.prefix}-text" placeholder="search">
-                <span class="${this.prefix}-btn">${searchSvg}</span>
+		return `<h1 class="${PPX}-header">TYPESCRIPT DEMO</h1>
+            <div class="${PPX}-search">
+                <input type="text" class="${PPX}-text" placeholder="search">
+                <span class="${PPX}-btn">${searchSvg}</span>
             </div>
-            <ul class="${this.prefix}-list"></ul>`
+            <ul class="${PPX}-list"></ul>`
 	}
 }

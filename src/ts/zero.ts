@@ -2,6 +2,7 @@ import { IConfig } from '..'
 import { Search } from './search'
 
 import Test from '../../plugins/test'
+import { PPX } from './common'
 
 // 此模块建议只做模块的初始化，不做任何逻辑
 export class Zero {
@@ -16,10 +17,10 @@ export class Zero {
 	}
 
 	private init() {
-		const { container, prefix } = this.config
+		const { container } = this.config
 
-		container.insertAdjacentHTML('beforeend', this.tpl(prefix))
-		const async = container.querySelector(`.${prefix}-async`)
+		container.insertAdjacentHTML('beforeend', this.tpl(PPX))
+		const async = container.querySelector(`.${PPX}-async`)
 
 		async!.addEventListener('click', () => {
 			if (this.asyncPromise) {
@@ -62,7 +63,7 @@ export class Zero {
 		return this.asyncPromise
 	}
 
-	private tpl(prefix: string) {
-		return `<div class="${prefix}-async">动态加载模块</div>`
+	private tpl(PPX: string) {
+		return `<div class="${PPX}-async">动态加载模块</div>`
 	}
 }
